@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 import firebase from './Firebase';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 import Navigation from './components/Navigation'
 import TaskForm from './components/TaskForm'
@@ -15,9 +17,12 @@ class App extends Component {
     this.ref = firebase.firestore().collection('tasks');
     this.unsubscribe = null;
     this.state = {
-      tasks: []
+      tasks: [],
+      show: false,
     };
     this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -70,6 +75,14 @@ class App extends Component {
     })*/
   }
 
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
   render(){
     const task = this.state.tasks.map((task, i) => {
       return (
@@ -102,19 +115,35 @@ class App extends Component {
         <Navigation tittle='Tasks' num_task={ this.state.tasks.length }/>
 
         <div className="container">
-          <div className="row mt-4">
-
-            <div className="col-md-4 text-center">
-              <TaskForm onAddTask={ this.handleAddTask }></TaskForm>
-            </div>
-
-            <div className="col-md-8">
+          <div className="row mt-12">
+            <div className="col-md-12">
               <div className="row">
                 { task }
               </div>
             </div>
           </div>
         </div>
+
+        <Button variant="primary" onClick={this.handleShow}>
+          Launch demo modal
+        </Button>
+
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <TaskForm onAddTask={ this.handleAddTask }></TaskForm>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
         
 
         <header className="App-header">
