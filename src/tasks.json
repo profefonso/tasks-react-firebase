@@ -1,0 +1,22 @@
+{
+    "tasks": [
+        {
+            "tittle": "Conectar con Firebase",
+            "assigned": "mark",
+            "description": "Tarea uno",
+            "priority": "low"
+        },
+        {
+            "tittle": "Implementar Redux",
+            "assigned": "Edward",
+            "description": "Tarea dos",
+            "priority": "medium"
+        },
+        {
+            "tittle": "Desplegar con docker",
+            "assigned": "Louis",
+            "description": "Tarea Tres",
+            "priority": "high"
+        }
+    ]
+}
