@@ -86,8 +86,8 @@ class App extends Component {
   render(){
     const task = this.state.tasks.map((task, i) => {
       return (
-        <div key={i} className="col-md-4">
-          <div className="card bg-dark text-white border-warning mt-4">
+        <div key={i} className="col-md-3">
+          <div className="card bg-dark text-white border-success mt-4">
             <div className="card-header">
               <h3>{ task.tittle }</h3>
               <span className="badge badge-pill badge-danger ml-2">
@@ -112,7 +112,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Navigation tittle='Tasks' num_task={ this.state.tasks.length }/>
+        <Navigation tittle='Tasks' num_task={ this.state.tasks.length } onNewTask={ this.handleShow }/>
 
         <div className="container">
           <div className="row mt-12">
@@ -123,11 +123,6 @@ class App extends Component {
             </div>
           </div>
         </div>
-
-        <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
-        </Button>
-
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
@@ -144,8 +139,6 @@ class App extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-        
-
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>

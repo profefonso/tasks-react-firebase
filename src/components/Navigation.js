@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Button from 'react-bootstrap/Button'
 
 class Navigation extends Component {
     render(){
@@ -11,6 +11,9 @@ class Navigation extends Component {
                         { this.props.num_task }
                     </span>
                 </a>
+                <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    <Button onClick={this.props.onNewTask} variant="outline-success">Add Task</Button>
+                </ul>
             </nav>
         )
     }
