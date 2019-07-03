@@ -8,6 +8,8 @@ class TaskForm extends Component {
           tittle: '',
           assigned: '',
           description: '',
+          category: 'Work',
+          status: 'no-working',
           priority: 'low'
         };
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -15,12 +17,15 @@ class TaskForm extends Component {
       }
     
       handleSubmit(e) {
+        console.log(this.state)
         e.preventDefault();
         this.props.onAddTask(this.state);
         this.setState({
           tittle: '',
           assigned: '',
           description: '',
+          category: 'Work',
+          status: 'no-working',
           priority: 'low'
         });
       }
@@ -55,6 +60,33 @@ class TaskForm extends Component {
                   onChange={this.handleInputChange}
                   placeholder="Assigned"
                   />
+              </div>
+              <div className="form-group">
+                <select
+                    name="category"
+                    className="form-control"
+                    value={this.state.category}
+                    onChange={this.handleInputChange}
+                  >
+                  <option>Work</option>
+                  <option>Study</option>
+                  <option>Home</option>
+                  <option>Personal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <select
+                    name="status"
+                    className="form-control"
+                    value={this.state.status}
+                    onChange={this.handleInputChange}
+                  >
+                  <option>no-working</option>
+                  <option>in-process</option>
+                  <option>finalized</option>
+                  <option>hold</option>
+                </select>
               </div>
               <div className="form-group">
                 <input

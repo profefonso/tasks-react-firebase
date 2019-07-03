@@ -28,13 +28,15 @@ class App extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const tasks = [];
     querySnapshot.forEach((doc) => {
-      const { tittle, assigned, description, priority } = doc.data();
+      const { tittle, assigned, description, category, status, priority } = doc.data();
       tasks.push({
         key: doc.id,
         doc, // DocumentSnapshot
         tittle,
         assigned,
         description,
+        category,
+        status,
         priority,
       });
     });
@@ -65,6 +67,8 @@ class App extends Component {
       tittle: task.tittle,
       assigned: task.assigned,
       description: task.description,
+      category: task.category,
+      status: task.status,
       priority: task.priority
     })
     .catch((error) => {
@@ -96,9 +100,11 @@ class App extends Component {
             </div>
             <div className="card-body">
               <p>{ task.description }</p>
-              <p><mark>{ task.assigned }</mark></p>
+              <p><mark>{ task.category }</mark></p>
+              <p>{ task.status }</p>
             </div>
             <div className="card-footer">
+            <p>{ task.assigned }</p>
               <button
                 className="btn btn-danger"
                 onClick={this.removeTask.bind(this, i, task.key)}>
