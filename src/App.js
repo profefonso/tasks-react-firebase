@@ -89,12 +89,18 @@ class App extends Component {
 
   render(){
     const task = this.state.tasks.map((task, i) => {
+      var badge_type = "primary";
+      if (task.priority === "medium"){
+        badge_type = "warning";
+      }else if(task.priority === "high"){
+        badge_type = "danger";
+      }
       return (
         <div key={i} className="col-md-3">
           <div className="card bg-dark text-white border-success mt-4">
             <div className="card-header">
               <h3>{ task.tittle }</h3>
-              <span className="badge badge-pill badge-danger ml-2">
+              <span className={"badge badge-pill badge-" + badge_type +" ml-2"}>
                 { task.priority }
               </span>
             </div>

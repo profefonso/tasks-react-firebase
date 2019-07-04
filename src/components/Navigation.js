@@ -5,7 +5,7 @@ class Navigation extends Component {
     render(){
         return(
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#">{ this.props.tittle }
+                <a className="navbar-brand" href="/">{ this.props.tittle }
                     <span className="badge badge-pill badge-light ml-2">
                         { this.props.num_task }
                     </span>
