@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import { MDBIcon } from "mdbreact";
 
 class Navigation extends Component {
     render(){
